@@ -1,0 +1,16 @@
+<div class="content-wrapper">
+  <ng-container [formGroup]="formGroup">
+    <p-dropdown [options]="countries | async" formControlName="selectedCountry" optionLabel="callingCodes" class="prime-dropdown">
+      <ng-template let-phoneCode pTemplate="selectedItem">
+        <span>+{{phoneCode.value.callingCodes}}</span>
+      </ng-template>
+      <ng-template let-country pTemplate="item">
+        <div class="list-item-wrapper">
+          <i [ngClass]="['flag', 'flag-'+ country.value.alpha2Code | lowercase]"></i>
+          <span class="country-name">{{country.value.name}}</span>
+        </div>
+      </ng-template>
+    </p-dropdown>
+    <input type="text" name="phonenumber" formControlName="phoneNumber" appOnlyNumbers>
+  </ng-container>
+</div>

@@ -1,0 +1,22 @@
+.inline-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button.call {
+    height: 32px;
+    width: 48px;
+    padding: 0 5px;
+    background-color: #2dc8d0f5;
+    border-radius: 40px;
+    margin-left: -14px;
+    .mat-button-wrapper {
+      display: flex;
+      height: 32px;
+      align-items: center;
+    }
+
+    &:disabled {
+      background-color: #a6a6a6;
+    }
+  }
+}

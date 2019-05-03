@@ -1,0 +1,28 @@
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  .ui-dropdown {
+    min-width: 74px;
+    box-sizing: border-box;
+    border: 0;
+    .ui-dropdown-trigger,
+    .ui-dropdown-label {
+      background-color: rgba(0,0,0,.12);
+    }
+    .ui-dropdown-panel {
+      min-width: 292px;
+      .ui-dropdown-item {
+        border-bottom: 1px solid grey;
+      }
+    }
+    .country-name {
+      margin-left: 8px;
+    }
+  }
+
+  input[name=phonenumber] {
+    height: 31px;
+    background-color: rgba(0,0,0,.12);
+    border: 0;
+  }
+}
