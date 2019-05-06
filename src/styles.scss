@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "./styles/flags.min.css";
+
 body {
+
   .ui-inputtext.ui-corner-all {
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
   }
+
   .ui-corner-right {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+  }
+
+  .pi {
+    font-size: 1em;
   }
 }

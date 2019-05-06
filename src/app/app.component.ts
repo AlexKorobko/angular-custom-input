@@ -17,5 +17,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {}
 
-
+  onBlur(){
+    console.log('<<<on blur');
+  }
 }

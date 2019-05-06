@@ -1,4 +1,4 @@
-import {Component, forwardRef, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, forwardRef, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {CountriesService} from '../../services/countries.service';
 import {Country} from '../../types/country.type';
@@ -33,14 +33,20 @@ export class PhonepickerComponent implements OnInit, ControlValueAccessor {
   });
 
   constructor(private $countries: CountriesService) {
-    this.countries = this.$countries.getCoutries();
+    this.countries = this.$countries.getCountries();
   }
 
   ngOnInit(): void {
     this.countries.subscribe(countries => this.formGroup.setValue({selectedCountry: countries[0], phoneNumber: ''}));
   }
 
-  public onTouched = () => {};
+  onTouched: Function;
+
+  @HostListener('click') onBlur() {
+    if (this.onTouched) {
+      this.onTouched();
+    }
+  }
 
   registerOnChange(fn: any): void {
     this.formGroup.valueChanges.subscribe(fn);
@@ -56,6 +62,7 @@ export class PhonepickerComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
+    if(!obj || typeof obj !== 'object') {return}
     this.formGroup.setValue(obj)
   }
 
@@ -63,7 +70,7 @@ export class PhonepickerComponent implements OnInit, ControlValueAccessor {
     const {selectedCountry, phoneNumber} = c.value;
     const parsedPhone = phoneNumber ? parsePhoneNumberFromString(phoneNumber, selectedCountry['alpha2Code']) : null;
     return !!parsedPhone ? null : {
-      invalidForm: {valid: false, message: "Address fields are invalid"}
+      invalidForm: {valid: false, message: "Phone field is invalid"}
     }
   }
 }

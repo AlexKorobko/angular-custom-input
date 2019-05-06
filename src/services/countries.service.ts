@@ -8,11 +8,11 @@ import {Observable} from 'rxjs';
 })
 export class CountriesService {
 
-  private coutriesURL = 'https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;callingCodes';
+  private countriesURL = 'https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;callingCodes';
 
   constructor(private $http: HttpClient) { }
 
-  getCoutries(): Observable<Array<Country>> {
-    return this.$http.get<Array<Country>>(this.coutriesURL);
+  getCountries(): Observable<Array<Country>> {
+    return this.$http.get<Array<Country>>(this.countriesURL);
   }
 }

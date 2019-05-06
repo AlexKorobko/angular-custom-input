@@ -1,9 +1,9 @@
-<div style="text-align:center">
+<div class="align-text-center">
   <h1>
     Customer Angular Phonepicker
   </h1>
   <form [formGroup]="nestedForm" class="inline-form">
-    <app-phonepicker formControlName="phoneNumber"></app-phonepicker>
+    <app-phonepicker formControlName="phoneNumber" (blur)="onBlur()"></app-phonepicker>
     <button mat-button class="call" [disabled]="nestedForm.invalid">
       <mat-icon>phone</mat-icon>
       <span>Call</span>
